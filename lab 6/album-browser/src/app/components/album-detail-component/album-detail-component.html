@@ -1,0 +1,41 @@
+<div class="detail-container">
+  <button class="back-btn" (click)="goBack()">← Back to Albums</button>
+
+  <div *ngIf="loading" class="loading">
+    Loading album details...
+  </div>
+
+  <div *ngIf="!loading && !album" class="error">
+    Album not found.
+  </div>
+
+  <div *ngIf="!loading && album" class="album-detail">
+    <h1>Album Details</h1>
+    
+    <div class="info">
+      <p><strong>ID:</strong> {{ album.id }}</p>
+      <p><strong>User ID:</strong> {{ album.userId }}</p>
+      
+      <div class="title-section">
+        <p><strong>Title:</strong></p>
+        
+        <div *ngIf="!editing" class="title-display">
+          <span>{{ album.title }}</span>
+          <button class="edit-btn" (click)="startEditing()">Edit</button>
+        </div>
+
+        <div *ngIf="editing" class="title-edit">
+          <input type="text" [(ngModel)]="editedTitle" class="title-input">
+          <div class="edit-actions">
+            <button class="save-btn" (click)="saveTitle()">Save</button>
+            <button class="cancel-btn" (click)="cancelEdit()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="photos-btn" (click)="viewPhotos()">View Photos</button>
+    </div>
+  </div>
+</div>

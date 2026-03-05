@@ -10,6 +10,11 @@ form.addEventListener('submit', function (event) {
         return;
     }
 
+     if (taskText.length > 5) {
+        alert('Нельзя добавлять больше 5 символов');
+        return;
+    }
+
     addTodoItem(taskText);
     input.value = '';
 });
